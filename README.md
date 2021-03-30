@@ -1,6 +1,6 @@
-# @tsa/cli
+# tsa-plugin-grafana
 
-Grafana plugin for [tsa]().
+Grafana plugin for [tsa](https://github.com/randymarsh77/tsa-cli).
 
 ## Usage
 

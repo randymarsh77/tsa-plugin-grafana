@@ -268,16 +268,6 @@
     lodash "^4.17.4"
     read-pkg-up "^7.0.0"
 
-"@simple-cli/base@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@simple-cli/base/-/base-0.0.4.tgz#9bf99639757aa5819536c99e9e434b64bb1c7560"
-  integrity sha512-dZOBgeET/wpCFgbKMX+6xEI/W2IXIHWci1kYcTuhnW3zZ5zY0lVUFtVrSHm4ac/2v/C63SD6qgWDrCEfVFJlag==
-  dependencies:
-    command-line-args "^5.1.1"
-    command-line-commands "^3.0.2"
-    command-line-usage "^6.1.1"
-    moment "^2.29.1"
-
 "@simple-cli/base@^0.0.5":
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/@simple-cli/base/-/base-0.0.5.tgz#95a4d1c902cda82b0e05f49be1853bfe979ce600"
@@ -293,12 +283,12 @@
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-1.1.2.tgz#ccb91445360179a04e7fe6aff78c00ffc1eeaf82"
   integrity sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==
 
-"@tsa-tools/cli@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@tsa-tools/cli/-/cli-0.0.2.tgz#529c38b0d35443800076160fa4642445c478ac7c"
-  integrity sha512-ip2pNqDQaL67l/VzBedCMLgGpkx6b6kiGAzEF9qfy9juUmja9u9nDQk9QehNX3J8JNRCQCrsPxY6ZE7/0/KcNQ==
+"@tsa-tools/cli@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@tsa-tools/cli/-/cli-0.0.6.tgz#398853d4009c186a0936e90a597168cf6806d61a"
+  integrity sha512-f6o2T/puWjImQwiLlcKUGN0lBAYSWJFjyG1YPiVSdnL1dz6ajrhc1nH91KCAwwk4KZIix0MmhZ/6zau2Yk2MJQ==
   dependencies:
-    "@simple-cli/base" "^0.0.4"
+    "@simple-cli/base" "^0.0.5"
     axios "^0.21.1"
     moment "^2.29.1"
     timeseries-analysis "^1.0.12"
