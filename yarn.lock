@@ -268,27 +268,26 @@
     lodash "^4.17.4"
     read-pkg-up "^7.0.0"
 
-"@simple-cli/base@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@simple-cli/base/-/base-0.0.5.tgz#95a4d1c902cda82b0e05f49be1853bfe979ce600"
-  integrity sha512-rUgnqS3c1xPI6H+6YWcBsv9yLsxUzVRVQEYqHWIICeW0L+jOWmo5KVDTI2gLS5KIN5kYRIlKCJ3kUTxf/MHcmw==
+"@simple-cli/base@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@simple-cli/base/-/base-1.1.1.tgz#76a6858f56c20b7322bafe13f382f1e7a2c08516"
+  integrity sha512-R1DjUKcaEhDwz8fagWTz/7B1Scqh1GRRI0DNqIvgHRCp7EyTlGaWOoZqiHkqXQFw0UjuDiZNrEInW0eIwOPZPA==
   dependencies:
     command-line-args "^5.1.1"
     command-line-commands "^3.0.2"
     command-line-usage "^6.1.1"
-    moment "^2.29.1"
 
 "@tootallnate/once@1":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-1.1.2.tgz#ccb91445360179a04e7fe6aff78c00ffc1eeaf82"
   integrity sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==
 
-"@tsa-tools/cli@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@tsa-tools/cli/-/cli-0.0.6.tgz#398853d4009c186a0936e90a597168cf6806d61a"
-  integrity sha512-f6o2T/puWjImQwiLlcKUGN0lBAYSWJFjyG1YPiVSdnL1dz6ajrhc1nH91KCAwwk4KZIix0MmhZ/6zau2Yk2MJQ==
+"@tsa-tools/cli@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@tsa-tools/cli/-/cli-1.0.1.tgz#53e95c41e7a79d3e0bd8d4d516a7ce310627db63"
+  integrity sha512-b4cJCWBqicnlRfCyt14JkmDftWXbJKudnSTG5g+oIpg/37elh6Upd1D1q3mavdtiOJkGnwW3HI/KqC69w0cQ0w==
   dependencies:
-    "@simple-cli/base" "^0.0.5"
+    "@simple-cli/base" "^1.1.1"
     axios "^0.21.1"
     moment "^2.29.1"
     timeseries-analysis "^1.0.12"
@@ -3620,14 +3619,14 @@ moment@^2.29.1:
   integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
 
 mongodb@latest:
-  version "3.6.5"
-  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.6.5.tgz#c27d786fd4d3c83dc19302483707d12a9d2aee5f"
-  integrity sha512-mQlYKw1iGbvJJejcPuyTaytq0xxlYbIoVDm2FODR+OHxyEiMR021vc32bTvamgBjCswsD54XIRwhg3yBaWqJjg==
+  version "3.6.6"
+  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.6.6.tgz#92e3658f45424c34add3003e3046c1535c534449"
+  integrity sha512-WlirMiuV1UPbej5JeCMqE93JRfZ/ZzqE7nJTwP85XzjAF4rRSeq2bGCb1cjfoHLOF06+HxADaPGqT0g3SbVT1w==
   dependencies:
     bl "^2.2.1"
     bson "^1.1.4"
     denque "^1.4.1"
-    require_optional "^1.0.1"
+    optional-require "^1.0.2"
     safe-buffer "^5.1.2"
   optionalDependencies:
     saslprep "^1.0.0"
@@ -4104,6 +4103,11 @@ opener@^1.5.2:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/opener/-/opener-1.5.2.tgz#5d37e1f35077b9dcac4301372271afdeb2a13598"
   integrity sha512-ur5UIdyw5Y7yEj9wLzhqXiy6GZ3Mwx0yGI+5sMn2r0N0v3cKJvUmFH5yPP+WXh9e0xfyzyJX95D8l088DNFj7A==
+
+optional-require@^1.0.2:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/optional-require/-/optional-require-1.0.3.tgz#275b8e9df1dc6a17ad155369c2422a440f89cb07"
+  integrity sha512-RV2Zp2MY2aeYK5G+B/Sps8lW5NHAzE5QClbFP15j+PWmP+T9PxlJXBOOLoSAdgwFvS4t0aMR4vpedMkbHfh0nA==
 
 optionator@^0.9.1:
   version "0.9.1"
@@ -4812,19 +4816,6 @@ require-main-filename@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/require-main-filename/-/require-main-filename-2.0.0.tgz#d0b329ecc7cc0f61649f62215be69af54aa8989b"
   integrity sha512-NKN5kMDylKuldxYLSUfrbo5Tuzh4hd+2E8NPPX02mZtn1VuREQToYe/ZdlJy+J3uCpfaiGF05e7B8W0iXbQHmg==
-
-require_optional@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/require_optional/-/require_optional-1.0.1.tgz#4cf35a4247f64ca3df8c2ef208cc494b1ca8fc2e"
-  integrity sha512-qhM/y57enGWHAe3v/NcwML6a3/vfESLe/sGM2dII+gEO0BpKRUkWZow/tyloNqJyN6kXSl3RyyM8Ll5D/sJP8g==
-  dependencies:
-    resolve-from "^2.0.0"
-    semver "^5.1.0"
-
-resolve-from@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/resolve-from/-/resolve-from-2.0.0.tgz#9480ab20e94ffa1d9e80a804c7ea147611966b57"
-  integrity sha1-lICrIOlP+h2egKgEx+oUdhGWa1c=
 
 resolve-from@^4.0.0:
   version "4.0.0"
@@ -5684,9 +5675,9 @@ unbox-primitive@^1.0.0:
     which-boxed-primitive "^1.0.1"
 
 underscore@latest:
-  version "1.12.1"
-  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.12.1.tgz#7bb8cc9b3d397e201cf8553336d262544ead829e"
-  integrity sha512-hEQt0+ZLDVUMhebKxL4x1BTtDY7bavVofhZ9KZ4aI26X9SRaE+Y3m83XUL1UP2jn8ynjndwCCpEHdUG+9pP1Tw==
+  version "1.13.1"
+  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.13.1.tgz#0c1c6bd2df54b6b69f2314066d65b6cde6fcf9d1"
+  integrity sha512-hzSoAVtJF+3ZtiFX0VgfFPHEDRm7Y/QPjGyNo4TVdnDTdft3tr8hEkD25a1jC+TjTuE7tkHGKkhwCgs9dgBB2g==
 
 unique-filename@^1.1.1:
   version "1.1.1"

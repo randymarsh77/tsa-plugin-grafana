@@ -18,8 +18,8 @@
   "author": "randymarsh77",
   "license": "MIT",
   "devDependencies": {
-    "@simple-cli/base": "^0.0.5",
-    "@tsa-tools/cli": "^0.0.6",
+    "@simple-cli/base": "^1.1.1",
+    "@tsa-tools/cli": "^1.0.1",
     "@types/node": "^14.14.37",
     "@typescript-eslint/eslint-plugin": "^4.19.0",
     "@typescript-eslint/parser": "^4.19.0",
