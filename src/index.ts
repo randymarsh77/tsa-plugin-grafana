@@ -32,9 +32,23 @@ interface IGrafanaOptions {
 	auth: string;
 }
 
-function buildQuery(instance: string, domain: string) {
+function expandTemplate(template: string) {
+	// Given a template, expand into all possible values.
+	// Template syntax uses [] to indicate an expansion group
+	// , delimited expands individual items
+	// TODO: num-num should expand an integer range
+	const parts = template.split(/(\[.*?\])/).filter((x) => x);
+	const expansion = parts.reduce<string[]>((acc, v) => {
+		const splits = v.startsWith('[') ? v.replace('[', '').replace(']', '').split(',') : [v];
+		return acc.length === 0 ? splits : acc.flatMap((x) => splits.map((y) => `${x}${y}`));
+	}, []);
+	return expansion;
+}
+
+function buildQuery(instances: string[], domain: string) {
 	const escapedDomain = domain.replace(/\./g, '\\\\.');
-	const query = `cpucap_cur_usage_percentage{instance=~"${instance}${escapedDomain}",job=~".*@cmon.*"} / cpucap_limit_percentage{instance=~"${instance}${escapedDomain}"} * 100`;
+	const nodes = instances.map((x) => `${x}${escapedDomain}`).join('|');
+	const query = `cpucap_cur_usage_percentage{instance=~"${nodes}",job=~".*@cmon.*"} / cpucap_limit_percentage{instance=~"${nodes}"} * 100`;
 	return encodeURIComponent(query);
 }
 
@@ -59,7 +73,7 @@ const execute = async ({ start, end, step }: ITSAPluginArgs, grafanaOptions: IGr
 	validateGrafanaOptionsOrFail(grafanaOptions);
 
 	const { host, instance, domain, auth } = grafanaOptions;
-	const arg = buildQuery(instance, domain);
+	const arg = buildQuery(expandTemplate(instance), domain);
 	const startSeconds = Math.round(start / 1000);
 	const endSeconds = Math.round(end / 1000);
 	const stepSeconds = Math.round(step / 1000);
@@ -79,7 +93,9 @@ const execute = async ({ start, end, step }: ITSAPluginArgs, grafanaOptions: IGr
 			process.exit(0);
 		}
 
-		const data = seriesData[0].values.map(([ts, v]: string[]) => [new Date(ts), parseInt(v, 10)]);
+		const data = seriesData.flatMap((x: any) =>
+			x.values.map(([ts, v]: string[]) => [new Date(ts), parseInt(v, 10)])
+		);
 		return data;
 	} catch (error) {
 		console.error(error);
