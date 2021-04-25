@@ -282,10 +282,10 @@
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-1.1.2.tgz#ccb91445360179a04e7fe6aff78c00ffc1eeaf82"
   integrity sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==
 
-"@tsa-tools/cli@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@tsa-tools/cli/-/cli-1.0.1.tgz#53e95c41e7a79d3e0bd8d4d516a7ce310627db63"
-  integrity sha512-b4cJCWBqicnlRfCyt14JkmDftWXbJKudnSTG5g+oIpg/37elh6Upd1D1q3mavdtiOJkGnwW3HI/KqC69w0cQ0w==
+"@tsa-tools/cli@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@tsa-tools/cli/-/cli-1.2.0.tgz#cb8670e925481bbb0950debce75c83b419f99bf3"
+  integrity sha512-7XoImc9WRA6XJFTs8glKgSsq+0nMIFGTdyWjKJYkcdM9Mz9RRCIa4oTMFA04Q4SlhOTrrjzjt5nEnuZJD8thUQ==
   dependencies:
     "@simple-cli/base" "^1.1.1"
     axios "^0.21.1"

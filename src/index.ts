@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { IPluginWithOptions } from '@simple-cli/base';
-import { ITSAPluginArgs, TSAPluginResult } from '@tsa-tools/cli';
+import { ILabeledTimeSeriesData, ITSAPluginArgs, TSAPluginResult } from '@tsa-tools/cli';
 
 const definitions = [
 	{
@@ -53,6 +53,20 @@ function buildQuery(instances: string[], domain: string) {
 }
 
 function validateGrafanaOptionsOrFail({ host, instance, domain, auth }: IGrafanaOptions) {
+	if (!auth) {
+		console.error('You must provide a grafana_session cookie.');
+		console.info(
+			'Open Dev Tools in a browser and capture network traffic while expanding/changing metrics.'
+		);
+		console.info(
+			'Look at the Cookie header on a request to query_range. One of the entries should set grafana_session.'
+		);
+		console.info(
+			'Copy this value and pass it via `--auth`, or, run `tsa config --default auth=value`'
+		);
+		process.exit(1);
+	}
+
 	if (!host) {
 		console.error('You must provide a valid host. e.g. --host my.grafana.host.com');
 		process.exit(1);
@@ -87,16 +101,20 @@ const execute = async ({ start, end, step }: ITSAPluginArgs, grafanaOptions: IGr
 				Cookie: `grafana_session=${auth}`,
 			},
 		});
-		const seriesData = response.data.data.result;
+		const seriesData = response.data.data.result as any[];
 		if (!seriesData || seriesData.length === 0) {
 			console.log('No data for specified time frame.');
 			process.exit(0);
 		}
 
-		const data = seriesData.flatMap((x: any) =>
-			x.values.map(([ts, v]: string[]) => [new Date(ts), parseInt(v, 10)])
-		);
-		return data;
+		const data = seriesData.reduce<ILabeledTimeSeriesData>((acc, x) => {
+			const { values, metric } = x;
+			const label = metric.instance.replace(domain, '');
+			const series = values.map(([ts, v]: string[]) => [new Date(ts), parseInt(v, 10)]);
+			acc[label] = series;
+			return acc;
+		}, {});
+		return { data };
 	} catch (error) {
 		console.error(error);
 		process.exit(1);
