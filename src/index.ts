@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { IPluginWithOptions } from '@simple-cli/base';
 import { ILabeledTimeSeriesData, ITSAPluginArgs, TSAPluginResult } from '@tsa-tools/cli';
+import { expandTemplate } from './templates';
 
 const definitions = [
 	{
@@ -30,19 +31,6 @@ interface IGrafanaOptions {
 	instance: string;
 	domain: string;
 	auth: string;
-}
-
-function expandTemplate(template: string) {
-	// Given a template, expand into all possible values.
-	// Template syntax uses [] to indicate an expansion group
-	// , delimited expands individual items
-	// TODO: num-num should expand an integer range
-	const parts = template.split(/(\[.*?\])/).filter((x) => x);
-	const expansion = parts.reduce<string[]>((acc, v) => {
-		const splits = v.startsWith('[') ? v.replace('[', '').replace(']', '').split(',') : [v];
-		return acc.length === 0 ? splits : acc.flatMap((x) => splits.map((y) => `${x}${y}`));
-	}, []);
-	return expansion;
 }
 
 function buildQuery(instances: string[], domain: string) {
