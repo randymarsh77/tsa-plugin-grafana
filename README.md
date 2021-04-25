@@ -6,27 +6,57 @@ Grafana plugin for [tsa](https://github.com/randymarsh77/tsa-cli).
 
 With no configuration
 ```
-tsa --plugin tsa-plugin-grafana --host cool.site.com --nodes web-node-number* --since 1d --stat cpu --metric max
+tsa --plugin tsa-plugin-grafana --host my.grafana.host.com --auth abc123 --instance [east,west]-web-node[0{1-9},{10-20}] --domain .my.site.com --since 1d
 ```
 
 Set some defaults to make repeat calls easier
 ```
 tsa config --default plugin=tsa-plugin-grafana
-tsa config --alias production=cool.site.com
+tsa config --alias production=my.grafana.host.com
 tsa config --default host=production
+tsa config --default domain=.my.site.com
+tsa config --default auth=abc123
 ```
 
 Ah, that is easier
 ```
-tsa --nodes web-node-number* --since 1d --stat cpu --metric max
+tsa --instance awesome-web-node --since 1d
 ```
 
-Do you do a thing a lot?
+Query multiple instances using template expansion
 ```
-tsa config --alias max-cpu='--nodes web-node-number* --stat cpu --metric max'
+tsa --instance [east,west]-web-node[0{1-9},{10-20}]
 ```
 
-Even easier
+Output looks like
 ```
-tsa max-cpu --since 1d
+wen-node05: Min: 5 Max: 80 Mean: 36.60696517412935
+wen-node03: Min: 7 Max: 90 Mean: 39.6407960199005
+wen-node04: Min: 8 Max: 99 Mean: 40.99800995024876
+```
+
+## Tempalte Expansion
+
+- `[]` indicates a group to expand.
+- Within a group, separate expansions by `,`
+- Within an expansion, use `{num-num}` to expand an integer range.
+
+#### Examples
+
+Input
+```
+[one,two,three]-thing[0{1-2},-special]
+```
+
+Produces
+```
+one-thing01
+one-thing02
+one-thing-special
+two-thing01
+two-thing02
+two-thing-special
+three-thing01
+three-thing02
+three-thing-special
 ```
