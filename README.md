@@ -8,6 +8,8 @@ Grafana plugin for [tsa](https://github.com/randymarsh77/tsa-cli).
 npm i -g @tsa-tools/cli tsa-plugin-grafana
 ```
 
+[Obtain your authentication value](#auth).
+
 ## Usage
 
 With no configuration
@@ -41,7 +43,7 @@ wen-node03: Min: 7 Max: 90 Mean: 39.6407960199005
 wen-node04: Min: 8 Max: 99 Mean: 40.99800995024876
 ```
 
-## Tempalte Expansion
+## Template Expansion
 
 - `[]` indicates a group to expand.
 - Within a group, separate expansions by `,`
@@ -66,3 +68,9 @@ three-thing01
 three-thing02
 three-thing-special
 ```
+
+## Auth
+
+- Open Dev Tools in a browser and capture network traffic while expanding/changing metrics.
+- Look at the Cookie header on a request to query_range. One of the entries should set grafana_session.
+- Copy this value and pass it via `--auth`, or, run `tsa config --default auth=value`
