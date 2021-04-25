@@ -5,7 +5,7 @@ Grafana plugin for [tsa](https://github.com/randymarsh77/tsa-cli).
 ## Installation
 
 ```
-npm i -g tsa-tools/cli tsa-plugin-grafana
+npm i -g @tsa-tools/cli tsa-plugin-grafana
 ```
 
 ## Usage
