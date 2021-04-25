@@ -38,9 +38,9 @@ tsa --instance [east,west]-web-node[0{1-9},{10-20}]
 
 Output looks like
 ```
-wen-node05: Min: 5 Max: 80 Mean: 36.60696517412935
-wen-node03: Min: 7 Max: 90 Mean: 39.6407960199005
-wen-node04: Min: 8 Max: 99 Mean: 40.99800995024876
+web-node05: Min: 5 Max: 80 Mean: 36.60696517412935
+web-node03: Min: 7 Max: 90 Mean: 39.6407960199005
+web-node04: Min: 8 Max: 99 Mean: 40.99800995024876
 ```
 
 ## Template Expansion
